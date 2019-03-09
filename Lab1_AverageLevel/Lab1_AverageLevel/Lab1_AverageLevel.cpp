@@ -121,8 +121,7 @@ void input(product *object, int n)
 int main()
 {
 	setlocale(LC_ALL, "rus");
-	int average = 0, n = 0, dead = 0;
-	int normaldate[3]{ 9, 3, 2019 };
+	int tempife = 0, n = 0, dead = 0;
 	for (;;)
 	{
 		cout << "Enter number of products	" << endl;
@@ -134,6 +133,47 @@ int main()
 		else
 		{
 			cout << "Are you joking?" << endl;
+		}
+	}
+	system("cls");
+	int normaldate[3];
+	cout << "Enter day		 " << "\n";
+	for (;;)
+	{
+		cin >> normaldate[0];
+		if (normaldate[0] > 0 && normaldate[0] < 32)
+		{
+			break;
+		}
+		else
+		{
+			cout << "Please input real day" << endl;
+		}
+	}
+	cout << "Enter month		" << "\n";
+	for (;;)
+	{
+		cin >> normaldate[1];
+		if (normaldate[1] > 0 && normaldate[1] < 13)
+		{
+			break;
+		}
+		else
+		{
+			cout << "Please input real month" << endl;
+		}
+	}
+	cout << "Enter year		" << "\n";
+	for (;;)
+	{
+		cin >> normaldate[2];
+		if (normaldate[2] > 2018 && normaldate[2] < 3000)
+		{
+			break;
+		}
+		else
+		{
+			cout << "Please input real year" << endl;
 		}
 	}
 	system("cls");
@@ -165,18 +205,9 @@ int main()
 	int temp = 0;
 	for (int i = 0; i < n; i++)
 	{
-		if (object[i].date[2] > 0 && object[i].date[2] > object[i].life[2])
-		{
-			object[i].date[2] = object[i].date[2] - 1;
-			object[i].date[1] = object[i].date[1] + 12;
-		}
-		if (object[i].date[1] > 0 && object[i].date[1]> object[i].life[1])
-		{
-			object[i].date[1] = object[i].date[1] - 1;
-			object[i].date[0] = object[i].date[0] + 30;
-		}
-		temp = object[i].date[0] - object[i].life[0];
-		if (temp < 21)
+		tempife = (object[i].life[2] * 365) + (object[i].life[1] * 30) + object[i].life[0];
+		temp = (object[i].date[2] * 365) + (object[i].date[1] * 30) + object[i].date[0];
+		if (temp - tempife < 21)
 		{
 			object[i].out(i);
 		}
