@@ -27,31 +27,30 @@ struct school_guy
 	int clas;
 } pupil;
 
-void input(school_guy *pupil, int amount_of_users)
+void input(school_guy *pupil, int amount_of_users, int counter)
 {
 
-		amount_of_users ++;
 		cout << "Enter name(ex. Vasiliy)		" << endl;
-		cin >> pupil->name ;
+		cin >> pupil[counter].name ;
 		cout << "Enter sur name(ex. Pupkin)		" << endl;
-		cin >> pupil->surname;
+		cin >> pupil[counter].surname;
 		cout << "Enter paronymic(ex. Sergeevich)		" << endl;
-		cin >> pupil->paronymic;
+		cin >> pupil[counter].paronymic;
 		cout << "Your nationality is (ex. ukrainian)" << endl;
-		cin >> pupil->nationality;
+		cin >> pupil[counter].nationality;
 		cout << "Enter your sex(M/m - man, W/w - woman)" << endl;
 		for (;;)
 		{
-			cin >> pupil->sex;
-			if (pupil->sex == "M" || pupil->sex == "m" || pupil->sex == "man" || pupil->sex == "Man")
+			cin >> pupil[counter].sex;
+			if (pupil[counter].sex == "M" || pupil[counter].sex == "m" || pupil[counter].sex == "man" || pupil[counter].sex == "Man")
 			{
 
-				pupil->sex = "Man";
+				pupil[counter].sex = "Man";
 				break;
 			}
-			else if (pupil->sex == "W" || pupil->sex == "w" || pupil->sex == "woman" || pupil->sex == "Woman")
+			else if (pupil[counter].sex == "W" || pupil[counter].sex == "w" || pupil[counter].sex == "woman" || pupil[counter].sex == "Woman")
 			{
-				pupil->sex = "Woman";
+				pupil[counter].sex = "Woman";
 				break;
 			}
 			else
@@ -63,30 +62,31 @@ void input(school_guy *pupil, int amount_of_users)
 		cout << "Enter weight (175)		" << endl;
 		for (;;)
 		{
-			try
+			//try
 			{
-				cin >> pupil->weight;
+				cin >> pupil[counter].weight;
 			}
-			catch (...)
+			//catch (...)
 			{
 				if (cin.fail())
 				{
 					cin.clear();
 					cin.ignore();
+					pupil[counter].weight = 0;
 				}
 			}
-			if (pupil->weight > 0 && pupil->weight < 200)
+			if (pupil[counter].weight > 0 && pupil[counter].weight < 200)
 				break;
 		}
 
 		cout << "Enter height (60)		" << endl;
 		for (;;)
 		{
-			try
+			//try
 			{
-				cin >> pupil->height;
+				cin >> pupil[counter].height;
 			}
-			catch (...)
+			//catch (...)
 			{
 				if (cin.fail())
 				{
@@ -94,18 +94,18 @@ void input(school_guy *pupil, int amount_of_users)
 					cin.ignore();
 				}
 			}
-			if (pupil->height > 50 && pupil->height < 250)
+			if (pupil[counter].height > 50 && pupil[counter].height < 250)
 				break;
 		}
 
 		cout << "Enter a number of your school(ex. 1)		" << endl;
 		for (;;)
 		{
-			try
+			//try
 			{
-				cin >> pupil->school;
+				cin >> pupil[counter].school;
 			}
-			catch (...)
+			//catch (...)
 			{
 				if (cin.fail())
 				{
@@ -113,18 +113,18 @@ void input(school_guy *pupil, int amount_of_users)
 					cin.ignore();
 				}
 			}
-			if(pupil->school >0)
+			if(pupil[counter].school >0)
 				break;
 		}
 
 		cout << "Enter class(ex. '11')		" << endl;
 		for (;;)
 		{
-			try
+			//try
 			{
-				cin >> pupil->clas;
+				cin >> pupil[counter].clas;
 			}
-			catch (...)
+			//catch (...)
 			{
 				if (cin.fail())
 				{
@@ -132,17 +132,17 @@ void input(school_guy *pupil, int amount_of_users)
 					cin.ignore();
 				}
 			}
-			if (pupil->clas > 0 && pupil->clas < 12)
+			if (pupil[counter].clas > 0 && pupil[counter].clas < 12)
 				break;
 		}
 		cout << "Enter phone number IT MUST HAVE 9 DIGITS! (ex. 0123456789)		" << endl;
 		for (;;)
 		{
-			try
+			//try
 			{
-				cin >> pupil->phonenomber;
+				cin >> pupil[counter].phonenomber;
 			}
-			catch (...)
+			//catch (...)
 			{
 				if (cin.fail())
 				{
@@ -150,7 +150,7 @@ void input(school_guy *pupil, int amount_of_users)
 					cin.ignore();
 				}
 			}
-			if (pupil->phonenomber > 111111119 && pupil->phonenomber < 10000000000)
+			if (pupil[counter].phonenomber > 111111119 && pupil[counter].phonenomber < 10000000000)
 				break;
 		}
 
@@ -161,11 +161,11 @@ void input(school_guy *pupil, int amount_of_users)
 			{
 				for (;;)
 				{
-					try
+					//try
 					{
-						cin >> pupil->date[2];
+						cin >> pupil[counter].date[2];
 					}
-					catch (...)
+					//catch (...)
 					{
 						if (cin.fail())
 						{
@@ -173,12 +173,12 @@ void input(school_guy *pupil, int amount_of_users)
 							cin.ignore();
 						}
 					}
-					if (pupil->date[2] > 0 && pupil->date[2] < 2020)
+					if (pupil[counter].date[2] > 0 && pupil[counter].date[2] < 2020)
 					{
 						break;
 					}
 				}
-				if (pupil->date[2] > 0 && pupil->date[2] < 2020)
+				if (pupil[counter].date[2] > 0 && pupil[counter].date[2] < 2020)
 				{
 					break;
 				}
@@ -192,11 +192,11 @@ void input(school_guy *pupil, int amount_of_users)
 			{
 				for (;;)
 				{
-					try
+					//try
 					{
-						cin >> pupil->date[1];
+						cin >> pupil[counter].date[1];
 					}
-					catch (...)
+					//catch (...)
 					{
 						if (cin.fail())
 						{
@@ -204,12 +204,12 @@ void input(school_guy *pupil, int amount_of_users)
 							cin.ignore();
 						}
 					}
-					if (pupil->date[1] >= 0 && pupil->date[1] < 13)
+					if (pupil[counter].date[1] > 0 && pupil[counter].date[1] < 13)
 					{
 						break;
 					}
 				}
-				if (pupil->date[1] >= 0 && pupil->date[1] < 13)
+				if (pupil[counter].date[1] > 0 && pupil[counter].date[1] < 13)
 				{
 					break;
 				}
@@ -223,11 +223,11 @@ void input(school_guy *pupil, int amount_of_users)
 			{
 				for (;;)
 				{
-					try
+					//try
 					{
-						cin >> pupil->date[0];
+						cin >> pupil[counter].date[0];
 					}
-					catch (...)
+					//catch (...)
 					{
 						if (cin.fail())
 						{
@@ -235,13 +235,13 @@ void input(school_guy *pupil, int amount_of_users)
 							cin.ignore();
 						}
 					}
-					if (pupil->date[0] > 0 && pupil->date[0] < 32)
+					if (pupil[counter].date[0] > 0 && pupil[counter].date[0] < 32)
 					{
 						break;
 					}
 				}
 
-				if (pupil->date[0] > 0 && pupil->date[0] < 32)
+				if (pupil[counter].date[0] > 0 && pupil[counter].date[0] < 32)
 				{
 					break;
 				}
@@ -255,22 +255,22 @@ void input(school_guy *pupil, int amount_of_users)
 		}
 
 		cout << "Enter your country (ex. Uganda)" << endl;
-		cin >> pupil->adress.country;
+		cin >> pupil[counter].adress.country;
 
 		cout << "Enter your region (ex. Sverdlovsk)" << endl;
-		cin >> pupil->adress.region;
+		cin >> pupil[counter].adress.region;
 
 		cout << "Enter your area (ex. Prebrejnaya)" << endl;
-		cin >> pupil->adress.area;
+		cin >> pupil[counter].adress.area;
 
 		cout << "Enter your post index (ex. 68100)" << endl;
 		for (;;)
 		{
-			try
+			//try
 			{
-				cin >> pupil->adress.post;
+				cin >> pupil[counter].adress.post;
 			}
-			catch (...)
+			//catch (...)
 			{
 				if (cin.fail())
 				{
@@ -278,20 +278,20 @@ void input(school_guy *pupil, int amount_of_users)
 					cin.ignore();
 				}
 			}
-			if (pupil->adress.post> 9999 && pupil->adress.post<100000)
+			if (pupil[counter].adress.post> 9999 && pupil[counter].adress.post<100000)
 				break;
 		}
 		cout << "Enter your town (ex. Nazarovka)" << endl;
-		cin >> pupil->adress.town;
+		cin >> pupil[counter].adress.town;
 
 		cout << "Enter  number of your house (ex. 7)" << endl;
 		for (;;)
 		{
-			try
+			//try
 			{
-				cin >> pupil->adress.house;
+				cin >> pupil[counter].adress.house;
 			}
-			catch (...)
+			//catch (...)
 			{
 				if (cin.fail())
 				{
@@ -299,18 +299,18 @@ void input(school_guy *pupil, int amount_of_users)
 					cin.ignore();
 				}
 			}
-			if(pupil->adress.house>0)
+			if(pupil[counter].adress.house>0)
 				break;
 		}
 
 		cout << "Enter number of your flat (ex. 213)" << endl;
 		for (;;)
 		{
-			try
+			//try
 			{
-				cin >> pupil->adress.flat;
+				cin >> pupil[counter].adress.flat;
 			}
-			catch (...)
+			//catch (...)
 			{
 				if (cin.fail())
 				{
@@ -318,7 +318,7 @@ void input(school_guy *pupil, int amount_of_users)
 					cin.ignore();
 				}
 			}
-			if(pupil->adress.flat>0)
+			if(pupil[counter].adress.flat>0)
 				break;
 		}
 }
@@ -326,27 +326,40 @@ void output(school_guy *pupil, int amount_of_users)
 {
 	for (int i = 0;i<amount_of_users; i++)
 	{
-		cout << "Name:\t" << pupil[i].name;
-		cout << "Surname:\t" << pupil[i].surname;
-		cout << "Patronymic:\t" << pupil[i].paronymic;
-		cout << "Sex:\t" << pupil[i].sex;
-		cout << "Nationality:\t" << pupil[i].nationality;
-		cout << "Weight:\t" << pupil[i].weight;
-		cout << "Height:\t" << pupil[i].height;
-		cout << "Date of birsday:\t" << pupil[i].date[0] << "." << pupil[i].date[1] << "." << pupil[i].date[2];
-		cout << "Phone nomber:\t" << pupil[i].phonenomber;
-		cout << "Country:\t" << pupil[i].adress.country;
-		cout << "Region:\t" << pupil[i].adress.region;
-		cout << "Area:\t" << pupil[i].adress.area;
-		cout << "Town:\t" << pupil[i].adress.town;
-		cout << "Post index:\t" << pupil[i].adress.post;
-		cout << "House:\t" << pupil[i].adress.house;
-		cout << "Flat:\t" << pupil[i].adress.flat;
-		cout << "Clas:\t" << pupil[i].phonenomber;
-		cout << "School:\t" << pupil[i].school;
+		cout << "\tInformation about user #" << i + 1 << "\t" << endl;
+		cout << "Name:\t\t\t" << pupil[i].name<<endl;
+		cout << "Surname:\t\t" << pupil[i].surname << endl;
+		cout << "Patronymic:\t\t" << pupil[i].paronymic << endl;
+		cout << "Sex:\t\t\t" << pupil[i].sex << endl;
+		cout << "Nationality:\t\t" << pupil[i].nationality << endl;
+		cout << "Weight:\t\t\t" << pupil[i].weight << endl;
+		cout << "Height:\t\t\t" << pupil[i].height << endl;
+		cout << "Date of birsday:\t" << pupil[i].date[0] << "." << pupil[i].date[1] << "." << pupil[i].date[2] << endl;
+		cout << "Phone nomber:\t\t" << pupil[i].phonenomber << endl;
+		cout << "Country:\t\t" << pupil[i].adress.country << endl;
+		cout << "Region:\t\t\t" << pupil[i].adress.region << endl;
+		cout << "Area:\t\t\t" << pupil[i].adress.area << endl;
+		cout << "Town:\t\t\t" << pupil[i].adress.town << endl;
+		cout << "Post index:\t\t" << pupil[i].adress.post << endl;
+		cout << "House:\t\t\t" << pupil[i].adress.house << endl;
+		cout << "Flat:\t\t\t" << pupil[i].adress.flat << endl;
+		cout << "Clas:\t\t\t" << pupil[i].phonenomber << endl;
+		cout << "School:\t\t\t" << pupil[i].school << endl;
 	}
 }
-
+void sort(school_guy *pupil, int amount_of_users)
+{
+	for (int i = 0; i < amount_of_users; i++)
+	{
+		for (int j = i + 1; j < amount_of_users; j++)
+		{
+			if (strcmp(pupil[i].name.c_str(), pupil[j].name.c_str()) > 0)
+			{
+				swap(pupil[i], pupil[j]);
+			}
+		}
+	}
+}
 int main_menu()
 {
 	system("cls");
@@ -364,21 +377,25 @@ int main_menu()
 int main()
 {
 	setlocale(LC_ALL, "rus");
-	school_guy *pupil = new school_guy;
-	int amount_of_users = 0;
 	for (;;)
 	{
-		int variant = main_menu();
+		int amount_of_users = 9;
+		school_guy *pupil1 = new school_guy[amount_of_users];		
+		int variant = main_menu(), counter = 0;
 		switch (variant)
 		{
 		case 1:
-			for (;;)
+			for (counter;;counter++)
 			{
 				system("cls");
-				input(pupil, amount_of_users);
+				amount_of_users++;
+				school_guy *pupil = new school_guy[amount_of_users];
+				pupil1 = pupil;
+				delete[] pupil1;
+				input(pupil, amount_of_users,counter);
 				system("cls");
 				cout << "Coose an action\n" << endl;
-				cout << "1. Create/Add pupil\n"
+				cout << "1. Add user\n"
 					<< "2. Back\n" << endl;
 				cout << ">>> ";
 				for (;;)
@@ -393,6 +410,7 @@ int main()
 						{
 							cin.clear();
 							cin.ignore();
+							variant = 0;
 						}
 					}
 					if (variant > 0 && variant < 3)
@@ -400,10 +418,14 @@ int main()
 				}
 				if (variant == 1)
 				{
+					school_guy *pupil1 = new school_guy[amount_of_users];
+					pupil1 = pupil;
+					delete[] pupil;
 					continue;
 				}
 				else
 				{
+					pupil = pupil1;
 					break;
 				}
 			}
@@ -418,18 +440,15 @@ int main()
 			}
 			else
 			{
-				output(pupil, amount_of_users);
+				output(pupil1, amount_of_users);
 				system("PAUSE");
 			}
 
 			break;
 		case 3:
 			cout << "Exit" << endl;
-			delete[] pupil;
+			delete[] pupil1;
 			exit(EXIT_SUCCESS);
-		default:
-			cerr << "Try again" << endl;
-			system("PAUSE");
 		}
 	}
 
