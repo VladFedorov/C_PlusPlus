@@ -373,28 +373,72 @@ int main_menu()
 	return variant;
 }
 
-
+int Resize_User_Mas(school_guy* pupil, int size)
+{
+	school_guy* resize_pupil = new school_guy[size + 1];
+	for (int i = 0; i < size; i++)
+	{
+		resize_pupil[i] = pupil[i];
+	}
+	if (pupil != NULL)
+	{
+		delete[]pupil;
+	}
+	else
+	{
+		pupil = resize_pupil;
+	}
+	size++;
+	pupil = resize_pupil;
+	delete[] resize_pupil;
+    return size;
+}
+ 
+//получение информации о читателе
+//Get_Reader	-	input
+ 
+//добавление читателя
+//void Add_User (school_guy*& pupil, int& size,int counter)
+//{
+//    Resize_User_Mas(pupil, size);
+//	
+//
+//}
 int main()
 {
 	setlocale(LC_ALL, "rus");
+	int amount_of_users = 0, counter = 0;
+	school_guy *pupil = new school_guy[amount_of_users];
 	for (;;)
-	{
-		int amount_of_users = 9;
-		school_guy *pupil1 = new school_guy[amount_of_users];		
-		int variant = main_menu(), counter = 0;
+	{		
+		int variant = main_menu();
 		switch (variant)
 		{
 		case 1:
-			for (counter;;counter++)
+			for (counter;;)
 			{
 				system("cls");
-				amount_of_users++;
+				school_guy* resize_pupil = new school_guy[amount_of_users + 1];
+				for (int i = 0; i < amount_of_users; i++)
+				{
+					resize_pupil[i] = pupil[i];
+				}
+				if (pupil != NULL)
+				{
+					delete[]pupil;
+				}
+				else
+				{
+					pupil = resize_pupil;
+				}
+				amount_of_users = amount_of_users+1;
+				pupil = resize_pupil;
+				delete[] resize_pupil;
 				school_guy *pupil = new school_guy[amount_of_users];
-				pupil1 = pupil;
-				delete[] pupil1;
-				input(pupil, amount_of_users,counter);
+				input(pupil, amount_of_users, counter);
+				counter = counter + 1;
 				system("cls");
-				cout << "Coose an action\n" << endl;
+				cout << "Choose an action\n" << endl;
 				cout << "1. Add user\n"
 					<< "2. Back\n" << endl;
 				cout << ">>> ";
@@ -418,14 +462,11 @@ int main()
 				}
 				if (variant == 1)
 				{
-					school_guy *pupil1 = new school_guy[amount_of_users];
-					pupil1 = pupil;
-					delete[] pupil;
 					continue;
 				}
 				else
 				{
-					pupil = pupil1;
+					
 					break;
 				}
 			}
@@ -440,15 +481,13 @@ int main()
 			}
 			else
 			{
-				output(pupil1, amount_of_users);
+				output(pupil, amount_of_users);
 				system("PAUSE");
 			}
 
 			break;
 		case 3:
 			cout << "Exit" << endl;
-			delete[] pupil1;
-			exit(EXIT_SUCCESS);
 		}
 	}
 
