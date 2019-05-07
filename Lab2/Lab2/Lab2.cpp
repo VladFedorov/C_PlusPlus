@@ -294,7 +294,7 @@ void output(vector<school_guy> &pupil,int i)
 		cout << "Post index:\t\t" << pupil[i].adress.post << endl;
 		cout << "House:\t\t\t" << pupil[i].adress.house << endl;
 		cout << "Flat:\t\t\t" << pupil[i].adress.flat << endl;
-		cout << "Clas:\t\t\t" << pupil[i].phonenomber << endl;
+		cout << "Clas:\t\t\t" << pupil[i].clas<< endl;
 		cout << "School:\t\t\t" << pupil[i].school << endl;
 }
 void sort_by_surname(vector<school_guy> &pupil)
