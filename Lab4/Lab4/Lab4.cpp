@@ -8,6 +8,7 @@ using namespace std;
 
 int main()
 {
+	//HARDDD
 	string str;
 	getline(cin, str);
 	stringstream ss(str);
