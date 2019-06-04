@@ -7,11 +7,11 @@ int main()
 	std::stack<int> st({1,2,3,4,0,9,8,7,5,6});
 	double avar =0;
 	int cifra = 0;
-	bool chetkiy = true;
+	bool chetniy = true;
 	while (!st.empty())
 	{
-		chetkiy = !chetkiy;
-		if (chetkiy == true)
+		chetniy = !chetniy;
+		if (chetniy == true)
 		{
 			avar += st.top();
 			cifra +=1 ;
